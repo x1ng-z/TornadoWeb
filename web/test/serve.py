@@ -20,6 +20,7 @@ import traceback
 import imp
 import time
 
+iswindows = True
 '''
 PATH_PRE='/home/app/algorithm_web/'
 LOG_PATH='../logs/'
@@ -222,7 +223,7 @@ class ProxyServer:
         sys.stdout.write("bind port=%s\n" % (str(tornado.options.options.port)))
         sys.stdout.flush()
         self.__server.bind(tornado.options.options.port, '0.0.0.0')
-        self.__server.start()
+        self.__server.start() if iswindows else self.__server.start(0)
         self.ioloop.start()
 
     def sig_handler(self, sig, frame):
