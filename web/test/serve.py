@@ -21,6 +21,7 @@ import imp
 import time
 
 iswindows = True
+isneedlog = True
 '''
 PATH_PRE='/home/app/algorithm_web/'
 LOG_PATH='../logs/'
@@ -102,7 +103,8 @@ class DmcHandler(tornado.web.RequestHandler):
             resp = {'data': data, 'algorithmContext': context, 'message': '', 'status': 200}
             return resp
         except Exception as e:
-            logging.error('%s' % traceback.format_exc())
+            logging.error('%s' % traceback.format_exc()) if isneedlog else sys.stdout.write('%s' % traceback.format_exc())
+            sys.stdout.flush()
             error = {'message': '%s' % traceback.format_exc(), 'status': 123456}
             return error
 
@@ -144,7 +146,8 @@ class PidHandler(tornado.web.RequestHandler):
             resp = {'data': data, 'algorithmContext': context, 'message': '', 'status': 200}
             return resp
         except Exception as e:
-            logging.error('%s' % traceback.format_exc())
+            logging.error('%s' % traceback.format_exc()) if isneedlog else sys.stdout.write('%s' % traceback.format_exc())
+            sys.stdout.flush()
             error = {'message': '%s' % traceback.format_exc(), 'status': 123456}
             return error
 
@@ -191,7 +194,8 @@ class CustomizeHandler(tornado.web.RequestHandler):
                 str(self.request.remote_ip), str(options.port), str(modelId)))
             return resp
         except Exception as e:
-            logging.error('%s' % traceback.format_exc())
+            logging.error('%s' % traceback.format_exc()) if isneedlog else sys.stdout.write('%s' % traceback.format_exc())
+            sys.stdout.flush()
             error = {'message': '%s' % traceback.format_exc(), 'status': 123456}
             return error
 
@@ -227,13 +231,16 @@ class ProxyServer:
         self.ioloop.start()
 
     def sig_handler(self, sig, frame):
-        logging.warning('Caught signal: %s', sig)
+        logging.warning('Caught signal: %s', sig) if isneedlog else sys.stdout.write('Caught signal: %s', sig)
+        sys.stdout.flush()
         self.ioloop.add_callback_from_signal(self.shutdown)
 
     def shutdown(self):
-        logging.info('Stopping http server')
+        logging.info('Stopping http server') if isneedlog else sys.stdout.write('Stopping http server')
+        sys.stdout.flush()
         self.__server.stop()
-        logging.info('Will shutdown in %s seconds ...', MAX_WAIT_SECONDS_BEFORE_SHUTDOWN)
+        logging.info('Will shutdown in %s seconds ...', MAX_WAIT_SECONDS_BEFORE_SHUTDOWN) if isneedlog else sys.stdout.write('Will shutdown in %s seconds ...', MAX_WAIT_SECONDS_BEFORE_SHUTDOWN)
+        sys.stdout.flush()
         deadline = time.time() + MAX_WAIT_SECONDS_BEFORE_SHUTDOWN
 
         def stop_loop():
@@ -242,7 +249,8 @@ class ProxyServer:
                 self.ioloop.add_timeout(now + 1, stop_loop)
             else:
                 self.ioloop.stop()
-                logging.info('Tornado Shutdown')
+                logging.info('Tornado Shutdown') if isneedlog else sys.stdout.write('Tornado Shutdown')
+                sys.stdout.flush()
 
         stop_loop()
 
