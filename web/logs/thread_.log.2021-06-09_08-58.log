@@ -1,0 +1,405 @@
+2021-06-08 19:24:49,633\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 19:25:11,745\tFile \"web.py\",line 2250\tWARNING: 404 POST /dmc/ (127.0.0.1) 1.03ms
+2021-06-08 19:25:16,448\tFile \"web.py\",line 2250\tWARNING: 404 POST /dmc (127.0.0.1) 0.00ms
+2021-06-08 19:25:26,646\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 19:25:27,323\tFile \"web.py\",line 2250\tWARNING: 404 POST /dmc (127.0.0.1) 1.00ms
+2021-06-08 19:25:32,396\tFile \"web.py\",line 2250\tWARNING: 404 POST /dmc (127.0.0.1) 0.00ms
+2021-06-08 19:26:10,310\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 19:26:13,340\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1.03ms
+2021-06-08 19:29:36,938\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 19:29:43,930\tFile \"test_serve.py\",line 49\tERROR: Traceback (most recent call last):
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 43, in contrl_dmc
+    input_data = requestdata['input']
+KeyError: 'input'
+
+2021-06-08 19:29:43,930\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1.00ms
+2021-06-08 19:30:15,514\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 19:30:50,536\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2061.48ms
+2021-06-08 19:31:03,619\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2325.80ms
+2021-06-08 19:31:29,619\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2217.10ms
+2021-06-08 19:31:35,639\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2788.54ms
+2021-06-08 19:32:02,648\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2248.84ms
+2021-06-08 19:36:06,979\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 19:57:14,498\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:24:30,433\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:30:01,990\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:30:21,912\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 209, in wrapper
+    yielded = next(result)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 69, in post
+    result = yield self.contrl_dmc(data)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\concurrent.py", line 123, in wrapper
+    conc_future = getattr(self, executor).submit(fn, self, *args, **kwargs)
+AttributeError: 'DmcHandler' object has no attribute 'executor'
+2021-06-08 20:30:21,944\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 41.94ms
+2021-06-08 20:30:23,733\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 209, in wrapper
+    yielded = next(result)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 69, in post
+    result = yield self.contrl_dmc(data)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\concurrent.py", line 123, in wrapper
+    conc_future = getattr(self, executor).submit(fn, self, *args, **kwargs)
+AttributeError: 'DmcHandler' object has no attribute 'executor'
+2021-06-08 20:30:23,734\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 10.97ms
+2021-06-08 20:31:04,444\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:31:09,409\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 191, in wrapper
+    result = func(*args, **kwargs)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 69, in post
+    result = self.contrl_dmc(data)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\concurrent.py", line 123, in wrapper
+    conc_future = getattr(self, executor).submit(fn, self, *args, **kwargs)
+AttributeError: 'DmcHandler' object has no attribute 'executor'
+2021-06-08 20:31:09,411\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 11.96ms
+2021-06-08 20:32:41,444\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:33:20,280\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 191, in wrapper
+    result = func(*args, **kwargs)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 73, in post
+    self.write(result)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 834, in write
+    raise TypeError(message)
+TypeError: write() only accepts bytes, unicode, and dict objects
+2021-06-08 20:33:20,286\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 27.95ms
+2021-06-08 20:37:40,108\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:37:44,280\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 191, in wrapper
+    result = func(*args, **kwargs)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 73, in post
+    self.write(result.encode())
+AttributeError: '_asyncio.Future' object has no attribute 'encode'
+2021-06-08 20:37:44,283\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 15.99ms
+2021-06-08 20:38:57,274\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:39:05,498\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 191, in wrapper
+    result = func(*args, **kwargs)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 73, in post
+    result.get()
+AttributeError: '_asyncio.Future' object has no attribute 'get'
+2021-06-08 20:39:05,507\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 25.93ms
+2021-06-08 20:44:00,658\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:44:11,056\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2634.98ms
+2021-06-08 20:48:07,250\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 20:49:58,763\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 28.89ms
+2021-06-08 20:50:00,364\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 43.88ms
+2021-06-08 20:50:02,097\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3194.45ms
+2021-06-08 20:55:57,526\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 13.95ms
+2021-06-08 20:56:00,677\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2958.15ms
+2021-06-08 20:56:07,209\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2388.58ms
+2021-06-08 20:56:16,990\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2214.12ms
+2021-06-08 20:56:22,083\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2234.06ms
+2021-06-08 20:56:27,447\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2328.80ms
+2021-06-08 20:56:37,887\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 19.96ms
+2021-06-08 20:56:40,137\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3305.66ms
+2021-06-08 20:56:41,735\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3453.77ms
+2021-06-08 20:56:54,550\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3828.76ms
+2021-06-08 20:56:55,876\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3867.68ms
+2021-06-08 21:26:22,885\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 13.96ms
+2021-06-08 21:26:25,171\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2193.13ms
+2021-06-08 21:27:46,663\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2136.32ms
+2021-06-08 21:28:02,436\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2113.29ms
+2021-06-08 21:30:59,641\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1951.81ms
+2021-06-08 21:33:06,641\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2047.52ms
+2021-06-08 21:41:56,097\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2019.64ms
+2021-06-08 21:42:12,655\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1958.27ms
+2021-06-08 21:42:31,369\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2077.48ms
+2021-06-08 21:42:37,817\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1895.43ms
+2021-06-08 21:51:38,771\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2038.55ms
+2021-06-08 21:51:40,835\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1974.72ms
+2021-06-08 21:51:42,917\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1991.36ms
+2021-06-08 21:52:21,651\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1979.71ms
+2021-06-08 21:52:23,667\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1927.84ms
+2021-06-08 21:52:25,704\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1953.74ms
+2021-06-08 21:53:03,273\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 13.96ms
+2021-06-08 21:53:03,297\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 37.90ms
+2021-06-08 21:53:03,318\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 43.82ms
+2021-06-08 21:53:09,274\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 5954.08ms
+2021-06-08 21:53:09,386\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 6016.91ms
+2021-06-08 21:53:09,726\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 6343.03ms
+2021-06-08 21:53:51,160\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 6001.37ms
+2021-06-08 21:53:51,242\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 6092.13ms
+2021-06-08 21:53:51,521\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 6358.46ms
+2021-06-08 21:54:10,807\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2008.68ms
+2021-06-08 21:54:23,526\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3832.75ms
+2021-06-08 21:54:23,638\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3953.42ms
+2021-06-08 21:55:19,503\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 21:55:25,570\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2725.71ms
+2021-06-08 21:55:55,437\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4095.05ms
+2021-06-08 21:55:55,482\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4112.04ms
+2021-06-08 21:57:24,016\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 21:57:42,138\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4081.09ms
+2021-06-08 21:57:42,147\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4091.06ms
+2021-06-08 21:59:25,466\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 21:59:36,469\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 742, in run
+    yielded = self.gen.throw(*exc_info)  # type: ignore
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 77, in post
+    result = yield self.contrl_dmc(data)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 735, in run
+    value = future.result()
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 772, in handle_yield
+    self.future = convert_yielded(yielded)
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 842, in convert_yielded
+    raise BadYieldError("yielded unknown object %r" % (yielded,))
+tornado.gen.BadYieldError: yielded unknown object 10.0
+2021-06-08 21:59:36,483\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 2324.78ms
+2021-06-08 21:59:39,038\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 742, in run
+    yielded = self.gen.throw(*exc_info)  # type: ignore
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 77, in post
+    result = yield self.contrl_dmc(data)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 735, in run
+    value = future.result()
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 772, in handle_yield
+    self.future = convert_yielded(yielded)
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 842, in convert_yielded
+    raise BadYieldError("yielded unknown object %r" % (yielded,))
+tornado.gen.BadYieldError: yielded unknown object 10.0
+2021-06-08 21:59:39,039\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 2554.19ms
+2021-06-08 22:03:37,054\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 22:07:11,791\tFile \"process.py\",line 126\tINFO: Starting 5 processes
+2021-06-08 22:07:52,216\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 22:08:26,837\tFile \"process.py\",line 126\tINFO: Starting 10 processes
+2021-06-08 22:47:17,257\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-08 22:47:39,963\tFile \"process.py\",line 126\tINFO: Starting 8 processes
+2021-06-08 22:53:28,188\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 01:16:31,036\tFile \"web.py\",line 2250\tWARNING: 405 GET /dmc (127.0.0.1) 7.81ms
+2021-06-09 01:24:20,147\tFile \"web.py\",line 2250\tWARNING: 404 GET /dmc/ (127.0.0.1) 0.98ms
+2021-06-09 01:24:26,069\tFile \"web.py\",line 2250\tWARNING: 405 GET /dmc (127.0.0.1) 0.00ms
+2021-06-09 01:24:35,074\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8888', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 209, in wrapper
+    yielded = next(result)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 76, in post
+    data = json.loads(self.request.body)
+  File "E:\Program Files\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "E:\Program Files\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "E:\Program Files\Python36\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2021-06-09 01:24:35,204\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 135.22ms
+2021-06-09 01:38:58,996\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 01:39:13,136\tFile \"web.py\",line 2250\tWARNING: 405 GET /dmc (192.168.0.119) 0.00ms
+2021-06-09 01:40:43,711\tFile \"web.py\",line 2250\tWARNING: 405 GET /dmc (192.168.0.119) 0.00ms
+2021-06-09 01:41:07,384\tFile \"web.py\",line 2250\tWARNING: 405 GET /dmc (192.168.0.119) 1.00ms
+2021-06-09 01:41:13,859\tFile \"web.py\",line 2250\tWARNING: 405 GET /dmc (192.168.0.119) 0.00ms
+2021-06-09 01:41:15,014\tFile \"web.py\",line 2250\tWARNING: 405 GET /dmc (192.168.0.119) 0.00ms
+2021-06-09 01:58:14,291\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8888', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 742, in run
+    yielded = self.gen.throw(*exc_info)  # type: ignore
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 78, in post
+    result = yield self.contrl_dmc(data)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 735, in run
+    value = future.result()
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 772, in handle_yield
+    self.future = convert_yielded(yielded)
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 836, in convert_yielded
+    return multi(yielded)  # type: ignore
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 457, in multi
+    return multi_future(children, quiet_exceptions=quiet_exceptions)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 487, in multi_future
+    children_futs = list(map(convert_yielded, children_seq))
+  File "E:\Program Files\Python36\lib\functools.py", line 803, in wrapper
+    return dispatch(args[0].__class__)(*args, **kw)
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 842, in convert_yielded
+    raise BadYieldError("yielded unknown object %r" % (yielded,))
+tornado.gen.BadYieldError: yielded unknown object 10.0
+2021-06-09 01:58:14,298\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 3169.09ms
+2021-06-09 01:59:04,233\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 01:59:11,670\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3084.67ms
+2021-06-09 02:21:34,864\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:10:41,844\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:27:20,073\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:27:26,877\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:28:36,148\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:31:37,118\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:34:26,864\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:34:51,499\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:34:58,234\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:35:51,760\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:36:49,791\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:37:29,624\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:37:32,099\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1701, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 92, in post
+    p.start()
+  File "E:\Program Files\Python36\lib\multiprocessing\process.py", line 105, in start
+    self._popen = self._Popen(self)
+  File "E:\Program Files\Python36\lib\multiprocessing\context.py", line 223, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+  File "E:\Program Files\Python36\lib\multiprocessing\context.py", line 322, in _Popen
+    return Popen(process_obj)
+  File "E:\Program Files\Python36\lib\multiprocessing\popen_spawn_win32.py", line 65, in __init__
+    reduction.dump(process_obj, to_child)
+  File "E:\Program Files\Python36\lib\multiprocessing\reduction.py", line 60, in dump
+    ForkingPickler(file, protocol).dump(obj)
+AttributeError: Can't pickle local object 'WeakSet.__init__.<locals>._remove'
+2021-06-09 08:37:32,154\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 95.61ms
+2021-06-09 08:39:22,784\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:39:30,845\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4375.35ms
+2021-06-09 08:39:42,894\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4371.53ms
+2021-06-09 08:39:52,091\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4425.63ms
+2021-06-09 08:41:40,306\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:41:58,662\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:42:49,639\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 0.98ms
+2021-06-09 08:42:52,639\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 0.98ms
+2021-06-09 08:43:20,421\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:43:28,531\tFile \"web.py\",line 1792\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:4321', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1703, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 191, in wrapper
+    result = func(*args, **kwargs)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 126, in post
+    self.test2(self)
+TypeError: test2() takes 1 positional argument but 2 were given
+2021-06-09 08:43:28,545\tFile \"web.py\",line 2250\tERROR: 500 POST /dmc (127.0.0.1) 15.61ms
+2021-06-09 08:45:15,934\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:45:24,959\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 0.98ms
+2021-06-09 08:45:53,609\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 0.98ms
+2021-06-09 08:47:23,718\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:47:27,278\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 34.13ms
+2021-06-09 08:47:30,318\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2990.46ms
+2021-06-09 08:47:51,652\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2362.95ms
+2021-06-09 08:47:55,607\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 2428.29ms
+2021-06-09 08:49:04,718\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:49:11,230\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4552.57ms
+2021-06-09 08:50:23,634\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:50:30,711\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1587.95ms
+2021-06-09 08:50:35,021\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4244.62ms
+2021-06-09 08:50:49,767\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4417.96ms
+2021-06-09 08:50:58,561\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4465.18ms
+2021-06-09 08:51:17,177\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4392.02ms
+2021-06-09 08:51:18,646\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 1467.87ms
+2021-06-09 08:51:22,621\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3928.87ms
+2021-06-09 08:51:38,419\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3833.72ms
+2021-06-09 08:51:42,662\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4241.69ms
+2021-06-09 08:51:57,230\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3909.70ms
+2021-06-09 08:52:04,350\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4437.83ms
+2021-06-09 08:52:13,446\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4503.29ms
+2021-06-09 08:52:17,713\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4266.35ms
+2021-06-09 08:56:27,884\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:56:46,455\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4343.68ms
+2021-06-09 08:56:59,067\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4475.58ms
+2021-06-09 08:57:31,852\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4311.29ms
+2021-06-09 08:57:35,810\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3958.65ms
+2021-06-09 08:58:01,629\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-09 08:58:10,299\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4616.48ms
+2021-06-09 08:58:18,669\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 3972.48ms
+2021-06-09 08:58:28,351\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4602.85ms
+2021-06-09 08:58:32,762\tFile \"web.py\",line 2250\tINFO: 200 POST /dmc (127.0.0.1) 4407.65ms

@@ -1,0 +1,82 @@
+2021-06-10 15:17:23,229\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-11 00:11:36,921\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-11 00:12:08,757\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-11 00:13:14,887\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-11 00:16:02,151\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-11 00:16:58,814\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-11 01:21:39,599\tFile \"web.py\",line 2243\tWARNING: 405 GET /dmc (127.0.0.1) 0.97ms
+2021-06-11 01:22:20,342\tFile \"web.py\",line 2243\tWARNING: 405 GET /dmc (127.0.0.1) 0.98ms
+2021-06-11 01:22:35,081\tFile \"web.py\",line 2243\tWARNING: 404 GET /dmc/ (127.0.0.1) 1.96ms
+2021-06-11 01:22:39,857\tFile \"web.py\",line 2243\tWARNING: 405 GET /dmc (127.0.0.1) 1.95ms
+2021-06-11 01:23:10,559\tFile \"web.py\",line 2243\tWARNING: 405 GET /pid (127.0.0.1) 0.98ms
+2021-06-11 01:24:29,573\tFile \"web.py\",line 2243\tWARNING: 405 GET /pid (127.0.0.1) 2.93ms
+2021-06-11 01:25:53,572\tFile \"web.py\",line 2243\tWARNING: 405 GET /pid (127.0.0.1) 1.95ms
+2021-06-11 01:26:02,177\tFile \"web.py\",line 1793\tERROR: Uncaught exception POST /pid (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8001', method='POST', uri='/pid', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1704, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 234, in wrapper
+    yielded = ctx_run(next, result)
+  File "E:\Program Files\Python36\lib\site-packages\contextvars\__init__.py", line 38, in run
+    return callable(*args, **kwargs)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 208, in post
+    data = json.loads(self.request.body)
+  File "E:\Program Files\Python36\lib\json\__init__.py", line 354, in loads
+    return _default_decoder.decode(s)
+  File "E:\Program Files\Python36\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "E:\Program Files\Python36\lib\json\decoder.py", line 355, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+2021-06-11 01:26:02,236\tFile \"web.py\",line 2243\tERROR: 500 POST /pid (127.0.0.1) 62.46ms
+2021-06-11 01:28:30,675\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 89.79ms
+2021-06-11 01:29:13,523\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 74.18ms
+2021-06-11 01:29:17,855\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 37.13ms
+2021-06-11 01:29:21,862\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 40.99ms
+2021-06-11 01:29:25,063\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 42.88ms
+2021-06-11 02:00:42,354\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 46.85ms
+2021-06-11 02:01:16,742\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 61.49ms
+2021-06-11 02:01:50,207\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 49.78ms
+2021-06-11 02:02:52,480\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 74.18ms
+2021-06-11 02:03:22,141\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 68.32ms
+2021-06-11 02:04:09,694\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 57.58ms
+2021-06-11 02:04:49,814\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 62.47ms
+2021-06-11 02:07:04,727\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 53.68ms
+2021-06-11 16:10:27,536\tFile \"web.py\",line 1793\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8001', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1704, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 775, in run
+    yielded = self.gen.send(value)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 184, in post
+    sys.stdout.write("pid=%s,request ip =%s,serve by =%s result_mv=%s,result_dmv=%s\n" % (str( os.getpid()),str(self.request.remote_ip), str(options.port),str(data['mv']),str(data['dmv'])))
+KeyError: 'mv'
+2021-06-11 16:10:27,589\tFile \"web.py\",line 2243\tERROR: 500 POST /dmc (127.0.0.1) 116.14ms
+2021-06-11 16:15:07,683\tFile \"web.py\",line 1793\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8001', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1704, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 775, in run
+    yielded = self.gen.send(value)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 184, in post
+    sys.stdout.write("pid=%s,request ip =%s,serve by =%s result_mv=%s,result_dmv=%s\n" % (str( os.getpid()),str(self.request.remote_ip), str(options.port),str(data['mv']),str(data['dmv'])))
+KeyError: 'mv'
+2021-06-11 16:15:07,685\tFile \"web.py\",line 2243\tERROR: 500 POST /dmc (127.0.0.1) 30.26ms
+2021-06-11 16:17:14,478\tFile \"web.py\",line 1793\tERROR: Uncaught exception POST /dmc (127.0.0.1)
+HTTPServerRequest(protocol='http', host='127.0.0.1:8001', method='POST', uri='/dmc', version='HTTP/1.1', remote_ip='127.0.0.1')
+Traceback (most recent call last):
+  File "E:\Program Files\Python36\lib\site-packages\tornado\web.py", line 1704, in _execute
+    result = await result
+  File "E:\Program Files\Python36\lib\site-packages\tornado\gen.py", line 775, in run
+    yielded = self.gen.send(value)
+  File "E:/project/2021_Project/TornadoWeb/web/test/test_serve.py", line 184, in post
+    sys.stdout.write("pid=%s,request ip =%s,serve by =%s result_mv=%s,result_dmv=%s\n" % (str( os.getpid()),str(self.request.remote_ip), str(options.port),str(result['mv']),str(result['dmv'])))
+KeyError: 'mv'
+2021-06-11 16:17:14,484\tFile \"web.py\",line 2243\tERROR: 500 POST /dmc (127.0.0.1) 53.68ms
+2021-06-11 16:20:03,267\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 19.52ms
+2021-06-11 16:20:03,553\tFile \"web.py\",line 2243\tINFO: 200 POST /dmc (127.0.0.1) 70.27ms
+2021-06-12 16:04:35,700\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
+2021-06-12 16:04:55,356\tFile \"selector_events.py\",line 65\tDEBUG: Using selector: SelectSelector
