@@ -115,8 +115,8 @@ class DmcHandler(tornado.web.RequestHandler):
         self.write(result)
         sys.stdout.write("pid=%s,request ip =%s,serve by =%s result_mv=%s,result_dmv=%s\n" % (
             str(os.getpid()), str(self.request.remote_ip), str(options.port),
-            str(result['mv'] if 'mv' in result else ''),
-            str(result['dmv'] if 'dmv' in result else '')))
+            str(result['data']['mv'] if 'mv' in result['data'] else ''),
+            str(result['data']['dmv'] if 'dmv' in result['data'] else '')))
         sys.stdout.flush()
         pass
 
@@ -262,6 +262,7 @@ class ProxyServer:
         os.kill(pid, signal.SIGINT)
 
 
+# python -m py_compile file.py
 if __name__ == '__main__':
     log_init()
     serve = ProxyServer()

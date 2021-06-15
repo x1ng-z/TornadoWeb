@@ -6,6 +6,7 @@ from scipy.optimize import Bounds
 # import time
 # import matplotlib.pyplot as plt
 import json
+import sys
 
 
 class dmcsolver:
@@ -116,6 +117,8 @@ class dmcsolver:
             }]
         res = minimize(self.costfunction, x0, jac=self.gradientcost, hess=self.hessioncost,
                        bounds=bounds, constraints=ineq_cons, options={'disp': False})
+        sys.stdout.write("qp=%s\n" % res.x)
+        sys.stdout.flush()
         dmv = res.x.reshape((self.m * self.M, 1))  # np.dot(self.L, res.x)
         return dmv
 
@@ -560,6 +563,8 @@ class dmc:
         self.dmcsolver.setspk_vector(spk_vector)
         self.dmcsolver.setyk_c(yk_c)
         dmv = self.dmcsolver.reversiblemethod()
+        sys.stdout.write(" inv =%s\n" % dmv.tolist())
+        sys.stdout.flush()
         if self._DEBUG:
             print("inv", dmv)
 
@@ -721,6 +726,8 @@ class dmc:
         :param dmvmin:
         :return:
         '''
+        '''判断计算出来的值是否为nan，如果是，则替换为0'''
+        dmv[np.isnan(dmv)]=0
         '''dmv累加矩阵'''
 
         '''L矩阵 只取即时控制增量'''
