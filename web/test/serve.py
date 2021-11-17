@@ -1,6 +1,6 @@
-import logging
-from logging.handlers import TimedRotatingFileHandler
-from logging.handlers import RotatingFileHandler
+# import logging
+# from logging.handlers import TimedRotatingFileHandler
+# from logging.handlers import RotatingFileHandler
 import re
 import sys
 import numpy as np
@@ -24,7 +24,7 @@ iswindows = True
 isneedlog = True
 '''
 PATH_PRE='/home/app/algorithm_web/'
-LOG_PATH='../logs/'
+LOG_PATH='/home/app/algorithm_web/web/logs/'
 sys.path.append(PATH_PRE+'web/xmodule/')
 sys.path.append(PATH_PRE+'web/log/')
 scriptPath = PATH_PRE+'web/customize/'
@@ -42,7 +42,7 @@ import dmc, pid
 MAX_WAIT_SECONDS_BEFORE_SHUTDOWN = 3
 tornado.options.define("port", default=9000, type=int, multiple=False, help="this s is a port")
 
-
+'''
 def log_init():
     log_fmt = '%(asctime)s\\tFile \\"%(filename)s\\",line %(lineno)s\\t%(levelname)s: %(message)s'
     formatter = logging.Formatter(log_fmt)
@@ -58,7 +58,7 @@ def log_init():
                         # filename='/home/URL/client/test_log.log',
                         filemode='a')
     log.addHandler(log_file_handler)
-
+'''
 
 def load(module_name, module_path):
     fp, pathname, description = imp.find_module(module_name, [module_path])
@@ -83,6 +83,7 @@ class DmcHandler(tornado.web.RequestHandler):
 
     def initialize(self):
         self.set_default_header()
+        # self._transforms.append(tornado.web.GZipContentEncoding)
 
     def set_default_header(self):
         self.set_header('Access-Control-Allow-Origin', '*')
@@ -103,7 +104,7 @@ class DmcHandler(tornado.web.RequestHandler):
             resp = {'data': data, 'algorithmContext': context, 'message': '', 'status': 200}
             return resp
         except Exception as e:
-            logging.error('%s' % traceback.format_exc()) if isneedlog else sys.stdout.write('%s' % traceback.format_exc())
+            sys.stdout.write('%s' % traceback.format_exc())
             sys.stdout.flush()
             error = {'message': '%s' % traceback.format_exc(), 'status': 123456}
             return error
@@ -146,7 +147,7 @@ class PidHandler(tornado.web.RequestHandler):
             resp = {'data': data, 'algorithmContext': context, 'message': '', 'status': 200}
             return resp
         except Exception as e:
-            logging.error('%s' % traceback.format_exc()) if isneedlog else sys.stdout.write('%s' % traceback.format_exc())
+            sys.stdout.write('%s' % traceback.format_exc())
             sys.stdout.flush()
             error = {'message': '%s' % traceback.format_exc(), 'status': 123456}
             return error
@@ -194,7 +195,7 @@ class CustomizeHandler(tornado.web.RequestHandler):
                 str(self.request.remote_ip), str(options.port), str(modelId)))
             return resp
         except Exception as e:
-            logging.error('%s' % traceback.format_exc()) if isneedlog else sys.stdout.write('%s' % traceback.format_exc())
+            sys.stdout.write('%s' % traceback.format_exc())
             sys.stdout.flush()
             error = {'message': '%s' % traceback.format_exc(), 'status': 123456}
             return error
@@ -223,6 +224,7 @@ class ProxyServer:
             (r'/pid', PidHandler),
             (r'/customize', CustomizeHandler)
         ], debug=False, autoreload=False)
+        '''decompress_request=True'''
         self.__server = tornado.httpserver.HTTPServer(self.__app, xheaders=True)
         sys.stdout.write("bind port=%s\n" % (str(tornado.options.options.port)))
         sys.stdout.flush()
@@ -231,15 +233,15 @@ class ProxyServer:
         self.ioloop.start()
 
     def sig_handler(self, sig, frame):
-        logging.warning('Caught signal: %s', sig) if isneedlog else sys.stdout.write('Caught signal: %s', sig)
+        sys.stdout.write('Caught signal: %s', sig)
         sys.stdout.flush()
         self.ioloop.add_callback_from_signal(self.shutdown)
 
     def shutdown(self):
-        logging.info('Stopping http server') if isneedlog else sys.stdout.write('Stopping http server')
+        sys.stdout.write('Stopping http server')
         sys.stdout.flush()
         self.__server.stop()
-        logging.info('Will shutdown in %s seconds ...', MAX_WAIT_SECONDS_BEFORE_SHUTDOWN) if isneedlog else sys.stdout.write('Will shutdown in %s seconds ...', MAX_WAIT_SECONDS_BEFORE_SHUTDOWN)
+        sys.stdout.write('Will shutdown in %s seconds ...', MAX_WAIT_SECONDS_BEFORE_SHUTDOWN)
         sys.stdout.flush()
         deadline = time.time() + MAX_WAIT_SECONDS_BEFORE_SHUTDOWN
 
@@ -249,7 +251,7 @@ class ProxyServer:
                 self.ioloop.add_timeout(now + 1, stop_loop)
             else:
                 self.ioloop.stop()
-                logging.info('Tornado Shutdown') if isneedlog else sys.stdout.write('Tornado Shutdown')
+                sys.stdout.write('Tornado Shutdown')
                 sys.stdout.flush()
 
         stop_loop()
@@ -264,7 +266,7 @@ class ProxyServer:
 
 # python -m py_compile file.py
 if __name__ == '__main__':
-    log_init()
+    # log_init()
     serve = ProxyServer()
     signal.signal(signal.SIGTERM, serve.sig_handler)
     signal.signal(signal.SIGINT, serve.sig_handler)
