@@ -14,8 +14,10 @@ class dmcsolver:
     采用qp求解还是满秩矩阵的逆矩阵求解两种方式
     '''
 
-    def init(self, N, R, Q, M, P, m, p, v, alphe, alphemethod, integrationInc_mv, B_resp_array, A_resp_matrix):
+    def init(self, N, R, Q, M, P, m, p, v, alphe, alphemethod, integrationInc_mv, B_resp_array, A_resp_matrix,
+             runStyle):
         '''
+        初始化求解器
         :param N:int 序列数目
         :param R:size=[m,1]系数r
         :param Q:size=[p,1]系数q
@@ -29,6 +31,7 @@ class dmcsolver:
         :param integrationInc_mv:mv引起的积分环节增量size=[p,m]
         :param B_resp_array:ff对pv响应向量size=[N*p,v]
         :param A_resp_matrix:mv对pv的响应矩阵size=[p*P,m*M]
+        :param runStyle 误差是否需要进行归一化
         '''
         self.N = N
         self.Q = Q
@@ -40,6 +43,7 @@ class dmcsolver:
         self.v = v
         self.alphe = alphe
         self.alphemethod = alphemethod
+        self.runStyle = runStyle
 
         self.param_interatInc_matrix_PM = np.zeros((P, M))
         interatInc_sequence = np.arange(1, P + 1)
@@ -71,18 +75,32 @@ class dmcsolver:
         self.initqpmethod()
 
     def reversiblemethod(self):
+        '''
+        直接用可逆矩阵法求解dmv
+        :return:
+        '''
         # ff和mv历史增量部分叠加
         # yk_lastdelta = self.predict(self.N, self.p, self.m, self.v, self.B_resp_array, self.mv_array, self.dmv_array, self.ff_array, self.dff_array,np.zeros((self.p, 1)))
         param_yk_p_N = np.kron(np.eye(self.p), np.eye(self.P, self.N))  # 提取前P个
         # param_yk_c_matrix = np.kron(np.eye(self.p), np.ones(self.P).reshape(-1, 1))
         # yk_c_vector = np.dot(param_yk_c_matrix, self.yk_c)  # yk时刻的矫正向量
         Ek = self.spk_vector - (np.dot(param_yk_p_N, self.yk_p_N))
+
         for index_alf, alf in enumerate(self.alphe.reshape(-1).tolist()):
+            #构建柔和系数矩阵
             param_alphe = np.array([1 - alf ** i for i in range(1, self.P + 1)]).reshape(-1, 1) if self.alphemethod[
                                                                                                        index_alf, 0] == 'before' else np.flipud(
                 np.array([1 - alf ** i for i in range(1, self.P + 1)]).reshape(-1, 1))
-            Ek[index_alf * self.P:(index_alf + 1) * self.P] = Ek[
-                                                              index_alf * self.P:(index_alf + 1) * self.P] * param_alphe
+            if(self.runStyle==1):
+                # 归一化
+                # 最大的残差
+                #_abs_residual=np.abs(Ek[index_alf * self.P:(index_alf + 1) * self.P])
+                _max_residual=np.max(np.abs(Ek[index_alf * self.P:(index_alf + 1) * self.P]))
+                Ek[index_alf * self.P:(index_alf + 1) * self.P]=Ek[index_alf * self.P:(index_alf + 1) * self.P]/_max_residual if _max_residual>0 else Ek[index_alf * self.P:(index_alf + 1) * self.P]
+            #柔化
+            Ek[index_alf * self.P:(index_alf + 1) * self.P] = Ek[index_alf * self.P:(index_alf + 1) * self.P] * param_alphe
+
+
         E_ = Ek  # - np.dot(param_yk_lastdelta, yk_lastdelta)
         dmv = np.dot(self.K_, E_)  # np.dot(self.L, np.dot(self.K_, E_))
         # print('inv total', np.dot(self.K_, E_))
@@ -172,7 +190,8 @@ class dmcsolver:
             'dmvmax': self.narrayconvert(self.dmvmax),
             'mvmin': self.narrayconvert(self.mvmin),
             'mvmax': self.narrayconvert(self.mvmax),
-            'mv0': self.narrayconvert(self.mv0)
+            'mv0': self.narrayconvert(self.mv0),
+            'runStyle': self.runStyle
         }
 
     def encode(self, properties):
@@ -208,6 +227,7 @@ class dmcsolver:
         self.mvmin = self.listConvert(properties['mvmin'])
         self.mvmax = self.listConvert(properties['mvmax'])
         self.mv0 = self.listConvert(properties['mv0'])
+        self.runStyle = properties['runStyle']
 
     def costfunction(self, dmv):
         dmv = dmv.reshape((self.m * self.M, 1))
@@ -221,6 +241,13 @@ class dmcsolver:
             param_alphe = np.array([1 - alf ** i for i in range(1, self.P + 1)]).reshape(-1, 1) if self.alphemethod[
                                                                                                        index_alf, 0] == 'before' else np.flipud(
                 np.array([1 - alf ** i for i in range(1, self.P + 1)]).reshape(-1, 1))
+
+            if (self.runStyle == 1):
+                # 归一化
+                # 最大的残差
+                _max_residual = np.max(np.abs(Ek[index_alf * self.P:(index_alf + 1) * self.P]))
+                Ek[index_alf * self.P:(index_alf + 1) * self.P] = Ek[index_alf * self.P:( index_alf + 1) * self.P] / _max_residual if _max_residual > 0 else Ek[index_alf * self.P:(index_alf + 1) * self.P]
+            #乘上柔化矩阵
             Ek[index_alf * self.P:(index_alf + 1) * self.P] = Ek[
                                                               index_alf * self.P:(index_alf + 1) * self.P] * param_alphe
         E_ = np.dot(-1 * (self.A_resp_matrix + self.plus_interagate), dmv) + Ek
@@ -346,7 +373,7 @@ class dmcsolver:
 
 
 class dmc:
-    def init(self, P, p, M, m, N, outStep, feedforwardNum, A, B, qi, ri, alphe, funneltype, alphemethod,
+    def init(self, P, p, M, m, N, outStep, feedforwardNum, A, B, qi, ri, alphe, funneltype, alphemethod, runStyle,
              integrationInc_mv, integrationInc_ff, DEBUG):
         '''
                     function:
@@ -364,6 +391,7 @@ class dmc:
                            :param qi 优化控制域矩阵，用于调整sp与预测的差值，在滚动优化部分
                            :param ri 优化时间域矩阵,用于约束调整dmv的大小，在滚动优化部分
                            :param pvusemv 一个矩阵，标记pv用了哪些mv
+                           :param runStyle 运行方式，现在定义为误差是否归一化
                            :param alphe 柔化系数
                            :param alphemethod 柔化系数方法 目前支持before after两种
                            :param funneltype 漏斗类型shape=(pv数量，2)：如pv数量为2 [[0,0],[1,0],[0,1]],[0,0]全漏斗，[1,0]下漏斗，[0,1]上漏斗
@@ -398,6 +426,8 @@ class dmc:
         self.alphe = alphe
 
         self.alphemethod = alphemethod
+
+        self.runStyle = runStyle
 
         '''mv 对 pv 的阶跃响应'''
         self.A_step_response_sequence = np.zeros((p * N, m))
@@ -434,7 +464,7 @@ class dmc:
                             alphemethod.reshape(p, 1),
                             integrationInc_mv,
                             self.B_step_response_sequence,
-                            self.dynamic_matrix_PM)
+                            self.dynamic_matrix_PM, runStyle)
         '''积分增量'''
         self.integrationInc_mv = integrationInc_mv
         self.integrationInc_ff = integrationInc_ff
@@ -534,7 +564,7 @@ class dmc:
             if self.v != 0:
                 for index_v in range(self.v):
                     yk_c_vector[index_p * self.N:(index_p + 1) * self.N] = yk_c_vector[index_p * self.N:(
-                                                                                                                    index_p + 1) * self.N] + np.dot(
+                                                                                                                index_p + 1) * self.N] + np.dot(
                         (self.B_step_response_sequence[index_p * self.N:(index_p + 1) * self.N, index_v] +
                          self.integrationInc_ff[index_p, index_v] * np.arange(1, self.N + 1)),
                         dff_array[index_v, -1]).reshape(-1, 1) + self.Pj(
@@ -545,7 +575,7 @@ class dmc:
     def rolloptimization(self, spk_vector, yk_c, mv0, dmvmax, dmvmin, mvmax, mvmin, yk_p_N):
         '''
         :param yk_c pv初始值 size=[p,1]
-        :param spk_vector k时刻的以后k+1至k+N设定值，size=[p*N,1]
+        :param spk_vector k时刻的以后k+1至k+P设定值，size=[P*p,1]，这里传入的已经是前P个数据了
         :param mv0 mv0初始值 size=[m,1]
         :param dmvmax dmv最大值 size=[m,1]
         :param dmvmin,dmv最小值 size=[m,1]
@@ -727,7 +757,7 @@ class dmc:
         :return:
         '''
         '''判断计算出来的值是否为nan，如果是，则替换为0'''
-        dmv[np.isnan(dmv)]=0
+        dmv[np.isnan(dmv)] = 0
         '''dmv累加矩阵'''
 
         '''L矩阵 只取即时控制增量'''
@@ -788,6 +818,10 @@ class dmc:
             return False
 
     def decode(self):
+        '''
+        将对象序列化成json
+        :return:
+        '''
         return {
             'P': self.P,
             'p': self.p,
@@ -811,11 +845,12 @@ class dmc:
             'hi_a': self.narrayConvert(self.hi_a),  # mv对pv响应ai的增量
             'hi_b': self.narrayConvert(self.hi_b),
             'DEBUG': self.narrayConvert(self._DEBUG),
+            'runStyle': self.runStyle
         }
 
     def encode(self, properties):
         '''
-                    function:
+                    function:将json反序列化成对象
                         预测控制
                     Args:
                            :param P 预测时域长度
@@ -897,6 +932,7 @@ class dmc:
         self.hi_a = self.listConvert(properties['hi_a'])
         self.hi_b = self.listConvert(properties['hi_b'])
         self._DEBUG = self.listConvert(properties['DEBUG'])
+        self.runStyle = properties['runStyle']
         pass
 
     def narrayConvert(self, value):
@@ -928,16 +964,18 @@ def main(input_data, context):
             R = np.array(input_data["R"])  # np.ones(m) * 3
             alphe = np.array(input_data['alphe'])  # np.ones(p) * 0.3
             alphemethod = np.array(input_data['alphemethod'])  # np.array(['after', 'before'])
+            #积分参数以60秒为单位的增量数据
             integrationInc_mv = np.array(input_data['integrationInc_mv']) * (input_data["APCOutCycle"] / 60)
             integrationInc_ff = np.array(input_data['integrationInc_ff']) * (input_data["APCOutCycle"] / 60) if (
                     'integrationInc_ff' in input_data) else []  # np.array([[1, 2], [3, 4]]), np.array([[1, 2], [3, 4]])  # [p,m].[p,v]
 
             # pvusemv = np.array([[1, 1], [1, 1]])
             funneltype = np.array(input_data['funneltype'])  # np.array([[0, 0], [0, 0]])
+            runStyle = input_data["runStyle"]
             __dmc = dmc()
             __dmc.init(P, p, M, m, N, input_data["APCOutCycle"], v, A_step_response_sequence,
                        B_step_response_sequence, Q, R, alphe,
-                       funneltype, alphemethod, integrationInc_mv, integrationInc_ff, False)
+                       funneltype, alphemethod, runStyle, integrationInc_mv, integrationInc_ff, False)
             context['dmc'] = __dmc.decode()
 
         for key, value in context.items():
@@ -978,9 +1016,9 @@ def main(input_data, context):
 
         if 'ff' not in context:
             context['ff'] = np.dot(np.array(input_data['FF']).reshape((__dmc.v, 1)), np.ones((1, __dmc.N))) if (
-                        'FF' in input_data) else []  # 前馈值
+                    'FF' in input_data) else []  # 前馈值
             context['dff'] = np.zeros((__dmc.v, __dmc.N)) if (
-                        'FF' in input_data) else []  # np.array([[0.1, 0.1, 0.1, 0.2], [0.1, 0.1, 0.1, 0.3]]), np.array([[0.1, 0.1, 0.1, 0.2], [0.1, 0.1, 0.1, 0.3]])
+                    'FF' in input_data) else []  # np.array([[0.1, 0.1, 0.1, 0.2], [0.1, 0.1, 0.1, 0.3]]), np.array([[0.1, 0.1, 0.1, 0.2], [0.1, 0.1, 0.1, 0.3]])
         if 'mvfb' not in context:
             context['mvfb'] = np.dot(np.array(input_data['UFB']).reshape((__dmc.m, 1)), np.ones((1, __dmc.N)))
             context['dmv'] = np.zeros((__dmc.m, __dmc.N))
